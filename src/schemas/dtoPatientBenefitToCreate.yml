@@ -1,0 +1,8 @@
+type: object
+properties:
+  benefitId:
+    type: integer
+  frequency:
+    type: string
+  isFullCoverage:
+    type: boolean

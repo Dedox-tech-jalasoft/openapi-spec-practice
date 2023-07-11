@@ -1,0 +1,12 @@
+type: object
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  description:
+    type: string
+  frequency:
+    type: string
+  isFullCoverage:
+    type: boolean

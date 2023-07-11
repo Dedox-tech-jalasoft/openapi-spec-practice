@@ -108,33 +108,8 @@ paths:
 components:
   schemas:
     DtoPatientBenefit:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        description:
-          type: string
-        frequency:
-          type: string
-        isFullCoverage:
-          type: boolean
+      $ref: schemas\dtoPatientBenefit.yml
     DtoPatient:
-      type: object
-      properties:
-        id:
-          type: integer
-        fullName:
-          type: string
-        company:
-          type: string
+      $ref: schemas\dtoPatient.yml
     DtoPatientBenefitToCreate:
-      type: object
-      properties:
-        benefitId:
-          type: integer
-        frequency:
-          type: string
-        isFullCoverage:
-          type: boolean
+      $ref: schemas\dtoPatientBenefitToCreate.yml
