@@ -1,0 +1,140 @@
+openapi: "3.0.2"
+info:
+  title: Insurance API
+  version: "1.0"
+servers:
+  - url: https://api.server.test/v1
+paths:
+  /carriers/{carrierId}/patients/{patientId}:
+    parameters:
+      - name: carrierId
+        in: path
+        schema:
+          type: integer
+        required: true
+      - name: patientId
+        in: path
+        schema:
+          type: integer
+        required: true
+    get:
+      operationId: getPatientById
+      summary: Retrieve the information of an specific patient
+      tags:
+        - Patients
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#/components/schemas/DtoPatient"
+  /carriers/{carrierId}/patients/{patientId}/benefits:
+    parameters:
+      - name: carrierId
+        in: path
+        schema:
+          type: integer
+        required: true
+      - name: patientId
+        in: path
+        schema:
+          type: integer
+        required: true
+    get:
+      operationId: getPatientBenefits
+      summary: Retrieve a list of the benefits of a given patient
+      tags:
+        - Benefits
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DtoPatientBenefit"
+    post:
+      operationId: createPatientBenefit
+      summary: Assign an existing generic benefit to an existing patient
+      tags:
+        - Benefits
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: "#/components/schemas/DtoPatientBenefitToCreate"
+      responses:
+        201:
+          description: Crated
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#/components/schemas/DtoPatientBenefit"
+  /carriers/{carrierId}/patients/{patientId}/benefits/{benefitId}:
+    parameters:
+      - name: carrierId
+        in: path
+        schema:
+          type: integer
+        required: true
+      - name: patientId
+        in: path
+        schema:
+          type: integer
+        required: true
+      - name: benefitId
+        in: path
+        schema:
+          type: integer
+        required: true
+    delete:
+      operationId: deletePatientBenefit
+      summary: Remove an existing generic benefit from an existing patient
+      tags:
+        - Benefits
+      responses:
+        204:
+          description: No content
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#/components/schemas/DtoPatientBenefit"
+components:
+  schemas:
+    DtoPatientBenefit:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        frequency:
+          type: string
+        isFullCoverage:
+          type: boolean
+    DtoPatient:
+      type: object
+      properties:
+        id:
+          type: integer
+        fullName:
+          type: string
+        company:
+          type: string
+    DtoPatientBenefitToCreate:
+      type: object
+      properties:
+        benefitId:
+          type: integer
+        frequency:
+          type: string
+        isFullCoverage:
+          type: boolean
