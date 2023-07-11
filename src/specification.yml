@@ -3,7 +3,7 @@ info:
   title: Insurance API
   version: "1.0"
 servers:
-  - url: https://api.server.test/v1
+  - url: https://localhost:7154/api/v1
 paths:
   /carriers/{carrierId}/patients/{patientId}:
     parameters:
