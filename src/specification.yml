@@ -30,6 +30,8 @@ paths:
               schema:
                 type: object
                 $ref: "#/components/schemas/DtoPatient"
+        404:
+          description: Not Found
   /carriers/{carrierId}/patients/{patientId}/benefits:
     parameters:
       - name: carrierId
